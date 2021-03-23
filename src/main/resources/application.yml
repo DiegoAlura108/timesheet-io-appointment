@@ -7,17 +7,26 @@ spring:
   application:
     name: appointment
   datasource:
-    driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/appointment?createIfNotExists=true&useTimezone=true&serverTimezone=UTC
-    username: root
-    password: root
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://ec2-18-208-49-190.compute-1.amazonaws.com:5432/ddcrn5upcalfau
+    username: etjjhnhottxxqu
+    password: 822823c35bcbf0b27ee062c62d23a26f85be408851d9c9a1faeef04e0d6c99d6
   jmx:
     enabled: true
   jpa:
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
       ddl-auto: update
+
+host:
+  link:
+    authorization: https://ms-timesheet-auth-app-dev.herokuapp.com/oauth/token
+
+security:
+  oauth2:
+    resource:
+      user-info-uri: https://ms-timesheet-auth-app-dev.herokuapp.com/person-auth/me
 
 eureka:
   instance:
@@ -26,4 +35,4 @@ eureka:
     fetch-registry: true
     register-with-eureka: true
     service-url:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: https://eureka-server-app-dev.herokuapp.com/eureka
